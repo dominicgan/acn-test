@@ -1,4 +1,5 @@
 import React from 'react';
+import '../sass/Card.css';
 
 const Card = (props) => {
 	return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import '../sass/CardListing.css';
 
 const CardListing = (props) => {
 	const renderList = (data) => {

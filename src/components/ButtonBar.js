@@ -1,4 +1,5 @@
 import React from 'react';
+import '../sass/ButtonBar.css';
 
 const ButtonBar = (props) => {
 	return (

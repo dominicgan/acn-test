@@ -1,16 +1,17 @@
 :root {
 	--red: #f00;
 	--bg-red: #e44;
+	--light-gray: #ddd;
 }
 
-.App .card-listing,
-.App .card-controls {
+.App {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.App:not(.App-ready) .card-listing,
+.App:not(.App-ready) .card-controls {
 	display: none;
-}
-
-.App.App-ready .card-listing,
-.App.App-ready .card-controls {
-	display: block;
 }
 
 .error {

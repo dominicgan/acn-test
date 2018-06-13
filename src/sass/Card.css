@@ -1,0 +1,21 @@
+.card {
+	padding: 15px;
+	background-color: var(--light-gray);
+}
+
+.card__id,
+.card__person {
+	text-align: center;
+}
+
+.card__id {
+	margin-bottom: 10px;
+}
+
+.card__person {
+	margin-top: 10px;
+}
+
+.card__avatar img {
+	width: 100%;
+}
