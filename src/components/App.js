@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ButtonBar from './ButtonBar';
+import CardListing from './CardListing';
+import CardControls from './CardControls';
 import '../sass/App.css';
 
 const ENDPOINT = 'https://reqres.in/api/users';
@@ -95,9 +98,9 @@ class App extends Component {
 	render() {
 		return (
 			<div className={"App " + (this.ready ? 'App-ready' : '')}>
-				<CardListingComponent data={this.state.data} />
-				<ButtonBarComponent handleClick={this.fetchButtonClick} text='Get Data' />
-				<CardControlsComponent
+				<CardListing data={this.state.data} />
+				<ButtonBar handleClick={this.fetchButtonClick} text='Get Data' />
+				<CardControls
 					page={this.state.page}
 					perPage={this.state.perPage}
 					total={this.state.total}
@@ -110,78 +113,5 @@ class App extends Component {
 			);
 	}
 }
-
-const ButtonBarComponent = (props) => {
-	return (
-		<div className="button-container">
-		<button onClick={props.handleClick}>{props.text}</button>
-		</div>
-		);
-};
-
-ButtonBarComponent.defaultProps = {
-	text: 'button'
-};
-
-
-const CardListingComponent = (props) => {
-	const renderList = (data) => {
-		return data.map((obj, i) => {
-			return (
-				<li className='list__item' key={i}>
-				<CardComponent id={obj.id} first_name={obj.first_name} avatar={obj.avatar} last_name={obj.last_name} />
-				</li>
-				)
-		});
-	}
-
-
-	return (<ul className='card-listing'>{renderList(props.data)}</ul>);
-};
-
-CardListingComponent.defaultProps = {
-	data: []
-};
-
-const CardComponent = (props) => {
-	return (
-		<div className="card">
-		<div className="card__id">{props.id}</div>
-		<div className="card__avatar">
-			<img width='100' height='100' src={props.avatar} alt={props.first_name + ' ' + props.last_name} />
-		</div>
-		<div className="card__person">
-		<span className="first-name">{props.first_name}</span>
-		<span className="spacer">, </span>
-		<span className="last-name">{props.last_name}</span>
-		</div>
-		</div>
-		)
-};
-
-CardComponent.defaultProps = {
-	id: 0,
-	first_name: '',
-	avatar: '',
-	last_name: ''
-};
-
-const CardControlsComponent = (props) => {
-	return (
-		<div className="card-controls">
-			<div className="results">
-			<p className="total">{props.total} result(s)</p>
-			<p className="pages">Page {props.page} of {props.totalPages} page(s)</p>
-			<p className="per-page">{props.perPage} result(s) per page</p>
-			</div>
-			<div className="pagination">
-				<button className="pagination__prev" onClick={props.handleButtonClick.bind(this, 'prev')} disabled={props.page === 1}>Prev</button>
-				<input type="text" className="pagination__value" value={props.page} onChange={props.handleInputChange}/>
-				<button className="pagination__next" onClick={props.handleButtonClick.bind(this, 'next')} disabled={props.page === props.totalPages}>Next</button>
-			</div>
-			<span className={'error ' + (props.error.length ? 'has-error' : '')}>{props.error}</span>
-		</div>
-		)
-};
 
 export default App;
