@@ -1,0 +1,25 @@
+:root {
+	--red: #f00;
+	--bg-red: #e44;
+}
+
+.App .card-listing,
+.App .card-controls {
+	display: none;
+}
+
+.App.App-ready .card-listing,
+.App.App-ready .card-controls {
+	display: block;
+}
+
+.error {
+	display: none;
+}
+
+.error.has-error {
+	display: block;
+	background-color: var(--bg-red);
+	padding: 3px;
+	border: solid 1px var(--red);
+}
