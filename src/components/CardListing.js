@@ -12,8 +12,11 @@ const CardListing = (props) => {
 		});
 	}
 
-
-	return (<ul className='card-listing'>{renderList(props.data)}</ul>);
+	if (props.loading) {
+		return (<div className="loading">Loading</div>);
+	} else {
+		return (<ul className='card-listing'>{renderList(props.data)}</ul>);
+	}
 };
 
 CardListing.defaultProps = {

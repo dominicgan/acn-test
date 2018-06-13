@@ -15,7 +15,8 @@ class App extends Component {
 			perPage: 3,
 			total: 0,
 			totalResults: 0,
-			error: ''
+			error: '',
+			loading: false
 		};
 
 		this.ready = false;
@@ -27,9 +28,11 @@ class App extends Component {
 	}
 	fetchButtonClick() {
 		console.log('button click', this.state.page);
+		this.setState({loading: true});
 		this.fetchData(ENDPOINT+'?page='+this.state.page).then((res) => {
 			this.ready = true;
 			this.setState({
+				loading: false,
 				data: res.data,
 				page: res.page,
 				perPage: res.per_page,
@@ -98,7 +101,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className={"App " + (this.ready ? 'App-ready' : '')}>
-				<CardListing data={this.state.data} />
+				<CardListing data={this.state.data} loading={this.state.loading}/>
 				<ButtonBar handleClick={this.fetchButtonClick} text='Get Data' />
 				<CardControls
 					page={this.state.page}
