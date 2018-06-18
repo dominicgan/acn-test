@@ -27,7 +27,6 @@ class App extends Component {
 	componentDidMount() {
 	}
 	fetchButtonClick() {
-		console.log('button click', this.state.page);
 		this.setState({loading: true});
 		this.fetchData(ENDPOINT+'?page='+this.state.page).then((res) => {
 			// artificial timeout for smoother loading
@@ -46,9 +45,14 @@ class App extends Component {
 	}
 	paginationInputChange(event) {
 		console.log(event.target.value);
-		// if (this.validateInput(event.target.value)) {
-			this.setState({page: event.target.value});
-		// }
+		this.validateInput(event.target.value);
+		this.setState({page: event.target.value}, () => {
+			if (this.state.page) {
+				console.log(typeof this.state.page,  this.state.page.length);
+			} else {
+				console.log('empty value');
+			}
+		});
 	}
 	paginationButtonClick(type){
 		let pageVal = this.state.page;
@@ -64,7 +68,9 @@ class App extends Component {
 		}
 
 		if (this.validateInput(pageVal)) {
-			this.setState({page: pageVal});
+			this.setState({page: pageVal}, () => {
+				this.fetchButtonClick();
+			});
 		}
 	}
 	validateInput(newPage) {
