@@ -1,0 +1,35 @@
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    width: 50px;
+    text-align: center;
+}
+
+.results {
+	font-size: 14px;
+}
+
+.results .row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 5px;
+}
+
+.results__summary {
+	justify-content: space-between;
+}
+
+.results__pages {
+	justify-content: flex-end;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center
+}
