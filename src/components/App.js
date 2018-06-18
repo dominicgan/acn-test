@@ -11,10 +11,11 @@ class App extends Component {
 		super(props);
 		this.state = {
 			data: [],
+			pageInput: 1,
 			page: 1,
 			perPage: 3,
 			total: 0,
-			totalResults: 0,
+			totalPages: 0,
 			error: '',
 			loading: false
 		};
@@ -44,15 +45,17 @@ class App extends Component {
 		});
 	}
 	paginationInputChange(event) {
-		console.log(event.target.value);
-		this.validateInput(event.target.value);
-		this.setState({page: event.target.value}, () => {
-			if (this.state.page) {
-				console.log(typeof this.state.page,  this.state.page.length);
+		const eTargetVal = event.target.value;
+		this.setState({pageInput: eTargetVal});
+
+		setTimeout(() => {
+			if (eTargetVal.length && this.validateInput(eTargetVal)) {
+				this.setState({page: eTargetVal});
+				this.fetchButtonClick();
 			} else {
-				console.log('empty value');
+				this.setState({pageInput: this.state.page});
 			}
-		});
+		}, 500);
 	}
 	paginationButtonClick(type){
 		let pageVal = this.state.page;
@@ -68,7 +71,9 @@ class App extends Component {
 		}
 
 		if (this.validateInput(pageVal)) {
-			this.setState({page: pageVal}, () => {
+			this.setState({
+				page: pageVal,
+				pageInput: pageVal}, () => {
 				this.fetchButtonClick();
 			});
 		}
