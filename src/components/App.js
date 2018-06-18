@@ -79,7 +79,7 @@ class App extends Component {
 		}
 
 		// error handling
-		if (newPage <= 0) { // less than min
+		if (newPage.length && newPage <= 0) { // less than min
 			this.setState({error: 'min bound'});
 		} else if (newPage > this.state.totalPages) { // more than max
 			this.setState({error: 'max bound'});
