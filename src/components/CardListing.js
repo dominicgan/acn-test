@@ -12,12 +12,9 @@ const CardListing = (props) => {
 				)
 		});
 	}
-
-	if (props.loading) {
-		return (<div className="loading">Loading</div>);
-	} else {
-		return (<ul className='card-listing'>{renderList(props.data)}</ul>);
-	}
+	return (
+		<ul className={'card-listing ' + (props.loading ? 'card-listing--loading' : '')} data-loading-text='Loading...'>{renderList(props.data)}</ul>
+		);
 };
 
 CardListing.defaultProps = {

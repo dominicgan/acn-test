@@ -30,15 +30,18 @@ class App extends Component {
 		console.log('button click', this.state.page);
 		this.setState({loading: true});
 		this.fetchData(ENDPOINT+'?page='+this.state.page).then((res) => {
-			this.ready = true;
-			this.setState({
-				loading: false,
-				data: res.data,
-				page: res.page,
-				perPage: res.per_page,
-				total: res.total,
-				totalPages: res.total_pages
-			});
+			// artificial timeout for smoother loading
+			setTimeout(() => {
+				this.ready = true;
+				this.setState({
+					loading: false,
+					data: res.data,
+					page: res.page,
+					perPage: res.per_page,
+					total: res.total,
+					totalPages: res.total_pages
+				});
+			}, 400);
 		});
 	}
 	paginationInputChange(event) {
