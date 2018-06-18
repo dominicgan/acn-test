@@ -1,10 +1,11 @@
 .card-listing {
 	list-style-type: none;
 	padding: 0;
+	position: relative;
 
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: stretch;
 	flex-wrap: wrap;
 }
 
@@ -31,7 +32,7 @@
 
 .list__item {
 	width: calc(33% - 10px / 2);
-	display: block;
+	display: flex;
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
