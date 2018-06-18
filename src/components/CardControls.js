@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBar from './ButtonBar';
 import '../sass/CardControls.css';
 
 const CardControls = (props) => {
@@ -7,6 +8,7 @@ const CardControls = (props) => {
 			<CardResults pageData={props.pageData}/>
 			<div className="pagination">
 				<button className="pagination__prev" onClick={props.handlePageChange.bind(this, 'prev')} disabled={props.pageData.page === 1}>Prev</button>
+				<ButtonBar handleClick={props.handleFetch} error={props.error}/>
 				<input type="number" className="pagination__value" value={props.pageData.pageInput} onChange={props.handleInputChange}/>
 				<button className="pagination__next" onClick={props.handlePageChange.bind(this, 'next')} disabled={props.pageData.page === props.pageData.totalPages}>Next</button>
 			</div>

@@ -120,9 +120,10 @@ class App extends Component {
 		return (
 			<div className={"App " + (this.ready ? 'App-ready' : '')}>
 				<CardListing data={this.state.data} loading={this.state.loading}/>
-				<ButtonBar handleClick={this.fetchButtonClick} text='Get Data' />
+				{!this.ready && <ButtonBar handleClick={this.fetchButtonClick} text='Get Data' error={this.state.error}/>}
 				<CardControls
 					pageData={pageData}
+					handleFetch={this.fetchButtonClick}
 					handleInputChange={this.paginationInputChange}
 					handlePageChange={this.paginationButtonClick}
 					error={this.state.error}
