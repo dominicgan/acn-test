@@ -108,17 +108,23 @@ class App extends Component {
 		return promise;
 	}
 	render() {
+		// consolidate info to object
+		// to pass fewer props into component
+		let pageData = {
+			pageInput: this.state.pageInput,
+			page: this.state.page,
+			perPage: this.state.perPage,
+			total: this.state.total,
+			totalPages: this.state.totalPages
+		};
 		return (
 			<div className={"App " + (this.ready ? 'App-ready' : '')}>
 				<CardListing data={this.state.data} loading={this.state.loading}/>
 				<ButtonBar handleClick={this.fetchButtonClick} text='Get Data' />
 				<CardControls
-					page={this.state.page}
-					perPage={this.state.perPage}
-					total={this.state.total}
-					totalPages={this.state.totalPages}
+					pageData={pageData}
 					handleInputChange={this.paginationInputChange}
-					handleButtonClick={this.paginationButtonClick}
+					handlePageChange={this.paginationButtonClick}
 					error={this.state.error}
 					/>
 			</div>
