@@ -29,12 +29,11 @@
 	opacity: 1;
 }
 
-
 .list__item {
-	width: calc(33% - 10px / 2);
+	width: calc(33% - var(--card-margin) / 2);
 	display: flex;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-right: var(--card-margin);
+	margin-bottom: var(--card-margin);
 }
 
 .list__item:nth-child(3n) {

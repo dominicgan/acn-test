@@ -1,6 +1,7 @@
 .card {
-	padding: 15px;
+	padding: 10px;
 	background-color: var(--light-gray);
+	width: 100%;
 }
 
 .card__id,
@@ -18,4 +19,5 @@
 
 .card__avatar img {
 	width: 100%;
+	display: block;
 }
