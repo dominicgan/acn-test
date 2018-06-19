@@ -23,6 +23,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	background: var(--light-gray);
 }
 
 .App {
@@ -35,6 +36,10 @@
 .App:not(.App-ready) .card-listing,
 .App:not(.App-ready) .card-controls {
 	display: none;
+}
+
+.App.App-ready {
+	align-self: flex-start;
 }
 
 .error {
