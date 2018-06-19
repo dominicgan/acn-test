@@ -9,8 +9,8 @@ const CardControls = (props) => {
 			<div className="pagination">
 				<button className="pagination__prev" onClick={props.handlePageChange.bind(this, 'prev')} disabled={props.pageData.page === 1}>Prev</button>
 				<ButtonBar handleClick={props.handleFetch} error={props.error}/>
-				<input type="number" className="pagination__value" value={props.pageData.pageInput} onChange={props.handleInputChange}/>
 				<button className="pagination__next" onClick={props.handlePageChange.bind(this, 'next')} disabled={props.pageData.page === props.pageData.totalPages}>Next</button>
+				<input type="number" className="pagination__value" value={props.pageData.pageInput} onChange={props.handleInputChange} onKeyPress={props.handleEnterKeypress}/>
 			</div>
 			<span className={'error ' + (props.error.length ? 'has-error' : '')}>{props.error}</span>
 		</div>

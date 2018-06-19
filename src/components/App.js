@@ -24,12 +24,23 @@ class App extends Component {
 		this.fetchButtonClick = this.fetchButtonClick.bind(this);
 		this.paginationInputChange = this.paginationInputChange.bind(this);
 		this.paginationButtonClick = this.paginationButtonClick.bind(this);
+		this.paginationEnterKeypress = this.paginationEnterKeypress.bind(this);
 	}
 	componentDidMount() {
 	}
 	fetchButtonClick() {
 		this.setState({loading: true});
-		this.fetchData(ENDPOINT+'?page='+this.state.page).then((res) => {
+
+		// validate pageInput value
+		if (this.ready && !this.validateInput(parseInt(this.state.pageInput, 10))) {
+			this.setState({
+				loading: false,
+				pageInput: this.state.page
+			});
+			return false;
+		}
+
+		this.fetchData(ENDPOINT+'?page='+this.state.pageInput).then((res) => {
 			// artificial timeout for smoother loading
 			setTimeout(() => {
 				this.ready = true;
@@ -47,15 +58,6 @@ class App extends Component {
 	paginationInputChange(event) {
 		const eTargetVal = event.target.value;
 		this.setState({pageInput: eTargetVal});
-
-		setTimeout(() => {
-			if (eTargetVal.length && this.validateInput(eTargetVal)) {
-				this.setState({page: eTargetVal});
-				this.fetchButtonClick();
-			} else {
-				this.setState({pageInput: this.state.page});
-			}
-		}, 500);
 	}
 	paginationButtonClick(type){
 		let pageVal = this.state.page;
@@ -70,12 +72,15 @@ class App extends Component {
 				break;
 		}
 
-		if (this.validateInput(pageVal)) {
-			this.setState({
-				page: pageVal,
-				pageInput: pageVal}, () => {
-				this.fetchButtonClick();
-			});
+		this.setState({
+			pageInput: pageVal
+		}, () => {
+			this.fetchButtonClick();
+		});
+	}
+	paginationEnterKeypress(e) {
+		if (e.which === 13) { // enter keypress
+			this.fetchButtonClick();
 		}
 	}
 	validateInput(newPage) {
@@ -85,8 +90,10 @@ class App extends Component {
 		if (this.state.page !== newPage && newPage > 0 && newPage <= this.state.totalPages) {
 			this.setState({error: ''});
 			return true;
-		} else {
-			console.log('invalid condition');
+		}
+
+		if (this.state.page === newPage) {
+			console.log('same page');
 		}
 
 		// error handling
@@ -100,7 +107,6 @@ class App extends Component {
 		return false;
 	}
 	fetchData(apiUrl) {
-		console.log(apiUrl);
 		let promise = new Promise((resolve, reject) => {
 			fetch(apiUrl)
 				.then((res) => {
@@ -125,11 +131,12 @@ class App extends Component {
 		return (
 			<div className={"App " + (this.ready ? 'App-ready' : '')}>
 				<CardListing data={this.state.data} loading={this.state.loading}/>
-				{!this.ready && <ButtonBar handleClick={this.fetchButtonClick} text='Get Data' error={this.state.error}/>}
+				{!this.ready && <ButtonBar handleClick={this.fetchButtonClick} text='Create new' icon='fa-plus' error={this.state.error}/>}
 				<CardControls
 					pageData={pageData}
 					handleFetch={this.fetchButtonClick}
 					handleInputChange={this.paginationInputChange}
+					handleEnterKeypress={this.paginationEnterKeypress}
 					handlePageChange={this.paginationButtonClick}
 					error={this.state.error}
 					/>
