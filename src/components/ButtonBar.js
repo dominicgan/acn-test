@@ -4,13 +4,17 @@ import '../sass/ButtonBar.css';
 const ButtonBar = (props) => {
 	return (
 		<div className="button-container">
-			<button onClick={props.handleClick} disabled={props.error.length ? 'disabled' : ''}>{props.text}</button>
+			<button onClick={props.handleClick}>
+			{props.icon && <i className={'fa '+props.icon} aria-hidden='true'/>}
+			{props.text}
+			</button>
 		</div>
 		);
 };
 
 ButtonBar.defaultProps = {
-	text: 'Get Data'
+	text: 'Get Data',
+	icon: ''
 };
 
 export default ButtonBar;
