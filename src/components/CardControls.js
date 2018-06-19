@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonBar from './ButtonBar';
-import '../sass/CardControls.css';
+import '../sass/CardControls.scss';
 
 const CardControls = (props) => {
 	return (

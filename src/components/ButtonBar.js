@@ -1,5 +1,5 @@
 import React from 'react';
-import '../sass/ButtonBar.css';
+import '../sass/ButtonBar.scss';
 
 const ButtonBar = (props) => {
 	return (

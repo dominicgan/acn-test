@@ -1,5 +1,5 @@
 import React from 'react';
-import '../sass/Card.css';
+import '../sass/Card.scss';
 
 const Card = (props) => {
 	return (

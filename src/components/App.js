@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonBar from './ButtonBar';
 import CardListing from './CardListing';
 import CardControls from './CardControls';
-import '../sass/App.css';
+import '../sass/App.scss';
 
 const ENDPOINT = 'https://reqres.in/api/users';
 
