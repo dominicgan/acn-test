@@ -1,14 +1,35 @@
 :root {
+	--white: #fff;
 	--red: #f00;
+	--teal: #189b8c;
 	--bg-red: #e44;
 	--light-gray: #ddd;
+	--med-gray: #ccc;
+	--dark-gray: #888;
 
 	--card-margin: 10px;
+	--border-radius: 5px;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+#root {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 .App {
-	max-width: 500px;
+	width: 100%;
+	max-width: 550px;
 	margin: 0 auto;
+	padding: 0 15px;
 }
 
 .App:not(.App-ready) .card-listing,
@@ -17,12 +38,24 @@
 }
 
 .error {
-	display: none;
+	display: block;
+	pointer-events: none;
+	opacity: 0;
+	transition: 0.25s opacity ease-in-out;
 }
 
 .error.has-error {
+	opacity: 1;
+	margin-top: 15px;
 	display: block;
 	background-color: var(--bg-red);
-	padding: 3px;
+	padding: 10px;
 	border: solid 1px var(--red);
+	border-radius: var(--border-radius);
+	color: var(--white);
+}
+
+.App > .button-container {
+	width: 35%;
+	margin: 0 auto;
 }

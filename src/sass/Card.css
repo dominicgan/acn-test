@@ -2,6 +2,7 @@
 	padding: 10px;
 	background-color: var(--light-gray);
 	width: 100%;
+	border-radius: var(--border-radius);
 }
 
 .card__id,
@@ -15,6 +16,10 @@
 
 .card__person {
 	margin-top: 10px;
+}
+
+.card__person span {
+	display: block;
 }
 
 .card__avatar img {

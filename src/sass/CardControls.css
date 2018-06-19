@@ -33,3 +33,28 @@ input[type="number"] {
 	display: flex;
 	justify-content: center
 }
+
+.card-controls .button-container {
+	width: 30%;
+	margin: 0 10px;
+}
+
+.pagination__value {
+	margin-right: 10px;
+	border-radius: var(--border-radius);
+	border: solid 1px var(--med-gray);
+}
+
+.pagination__value:focus {
+	outline: none;
+	border: solid 1px var(--dark-gray);
+}
+
+.pagination__btn {
+	min-width: 40px;
+}
+
+.pagination__btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
