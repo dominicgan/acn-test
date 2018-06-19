@@ -13,25 +13,45 @@ input[type="number"] {
 
 .results {
 	font-size: 14px;
-}
 
-.results .row {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 5px;
-}
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 5px;
+	}
 
-.results__summary {
-	justify-content: space-between;
-}
+	&__summary {
+		justify-content: space-between;
+	}
 
-.results__pages {
-	justify-content: flex-end;
+	&__pages {
+		justify-content: flex-end;
+	}
 }
 
 .pagination {
 	display: flex;
-	justify-content: center
+	justify-content: center;
+
+	&__value {
+		margin-right: 10px;
+		border-radius: var(--border-radius);
+		border: solid 1px var(--med-gray);
+
+		&:focus {
+			outline: none;
+			border: solid 1px var(--dark-gray);
+		}
+	}
+
+	&__btn {
+		min-width: 40px;
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
 }
 
 .card-controls .button-container {
@@ -39,22 +59,3 @@ input[type="number"] {
 	margin: 0 10px;
 }
 
-.pagination__value {
-	margin-right: 10px;
-	border-radius: var(--border-radius);
-	border: solid 1px var(--med-gray);
-}
-
-.pagination__value:focus {
-	outline: none;
-	border: solid 1px var(--dark-gray);
-}
-
-.pagination__btn {
-	min-width: 40px;
-}
-
-.pagination__btn:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-}

@@ -31,15 +31,22 @@
 	max-width: 550px;
 	margin: 0 auto;
 	padding: 0 15px;
-}
 
-.App:not(.App-ready) .card-listing,
-.App:not(.App-ready) .card-controls {
-	display: none;
-}
+	&:not(.App-ready) {
+		.card-listing,
+		.card-controls {
+			display: none;
+		}
+	}
 
-.App.App-ready {
-	align-self: flex-start;
+	&.App-ready {
+		align-self: flex-start;
+	}
+
+	> .button-container {
+		width: 35%;
+		margin: 0 auto;
+	}
 }
 
 .error {
@@ -47,20 +54,15 @@
 	pointer-events: none;
 	opacity: 0;
 	transition: 0.25s opacity ease-in-out;
-}
 
-.error.has-error {
-	opacity: 1;
-	margin-top: 15px;
-	display: block;
-	background-color: var(--bg-red);
-	padding: 10px;
-	border: solid 1px var(--red);
-	border-radius: var(--border-radius);
-	color: var(--white);
-}
-
-.App > .button-container {
-	width: 35%;
-	margin: 0 auto;
+	&.has-error {
+		opacity: 1;
+		margin-top: 15px;
+		display: block;
+		background-color: var(--bg-red);
+		padding: 10px;
+		border: solid 1px var(--red);
+		border-radius: var(--border-radius);
+		color: var(--white);
+	}
 }

@@ -4,26 +4,26 @@
 	width: 100%;
 	border-radius: 2px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
 
-.card__id,
-.card__person {
-	text-align: center;
-}
+	&__id,
+	&__person {
+		text-align: center;
+	}
 
-.card__id {
-	margin-bottom: 10px;
-}
+	&__id {
+		margin-bottom: 10px;
+	}
 
-.card__person {
-	margin-top: 10px;
-}
+	&__person {
+		margin-top: 10px;
 
-.card__person span {
-	display: block;
-}
+		span {
+			display: block;
+		}
+	}
 
-.card__avatar img {
-	width: 100%;
-	display: block;
+	&__avatar img {
+		width: 100%;
+		display: block;
+	}
 }
